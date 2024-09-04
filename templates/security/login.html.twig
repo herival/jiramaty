@@ -1,41 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Fidirana!{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+<main class="main" id="top">
+    <section class="mt-7 py-0">
+        <div class="bg-holder w-50 bg-right d-none d-lg-block"
+            style="background-image:url(assets/img/gallery/jirama2.webp);"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                    <h1 class="display-3 text-1000 fw-normal">Jirama-ty</h1>
+                    <h1 class="display-3 text-primary fw-bold">Fidirana</h1>
+                    <div class="pt-5">
+                        <nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    <form method="post" class="row g-4 mt-5">
+                                        {% if error %}
+                                        <div class="alert alert-danger col-sm-10 col-md-10 col-xl-10r">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                        {% endif %}
+                                    
+                                        {% if app.user %}
+                                        <div class="mb-3 col-sm-10 col-md-10 col-xl-10">
+                                            Efa tafiditra amin'ny anaran'i : {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                        </div>
+                                        {% endif %}
+                                        <div class="col-sm-10 col-md-10 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden" for="username">Anarana</label>
+                                                <input class="form-control input-box form-voyage-control"
+                                                    value="{{ last_username }}" name="_username" id="username"
+                                                    type="text" placeholder="Anarana" required autofocus />
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-xl-10">
+                                            <div class="input-group-icon"><input
+                                                    class="form-control input-box form-voyage-control" id="password"
+                                                    type="password" name="_password" autocomplete="current-password" required/><span
+                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-lock"></i></span></div>
+                                        </div>
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                        <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
+                                                class="btn btn-secondary" type="submit">Miditra</button></div>
+                                        <input type="hidden" name="_csrf_token"
+                                            value="{{ csrf_token('authenticate') }}">
+                                        <a href="{{path('app_register')}}" class="text-center col-10">Misoratra anarana</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        {% endif %}
+        </div>
+    </section>
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Username</label>
-        <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
 
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
+</main><!-- ===============================================-->
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
-            </div>
-        #}
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
 {% endblock %}

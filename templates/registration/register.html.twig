@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<main class="main" id="top">
+    <section class="mt-7 py-0">
+        <div class="bg-holder w-50 bg-right d-none d-lg-block"
+            style="background-image:url(assets/img/gallery/jirama2.webp);"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                    <h1 class="display-3 text-1000 fw-normal">Jirama-ty</h1>
+                    <h1 class="display-3 text-primary fw-bold">Fisoratana anarana</h1>
+                    <div class="pt-5">
+                        <nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    {{ form_errors(registrationForm) }}
+                                    {{ form_start(registrationForm) }}
+                                    {# <form method="post" class="row g-4 mt-5"> #}
+                                        <div class="col-sm-10 col-md-10 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden" for="username">Anarana</label>
+                                                {{ form_widget(registrationForm.username, {
+                                                    attr : {
+                                                        "class" : "form-control input-box form-voyage-control", 
+                                                        "placeholder" : "Anarana"
+                                                    }    
+                                                }) }}
+                                                {# <input class="form-control input-box form-voyage-control" value="" name="_username" id="username" type="text" placeholder="Anarana"required autofocus /> #}
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-xl-10">
+                                            <div class="input-group-icon">
+                                                {{ form_widget(registrationForm.plainPassword.first) }}
+                                                {# <input class="form-control input-box form-voyage-control" id="password" type="password" name="_password" autocomplete="current-password" required /> #}
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-lock"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10 col-md-10 col-xl-10">
+                                            <div class="input-group-icon">
+                                                {{ form_widget(registrationForm.plainPassword.second) }}
+                                                {# <input class="form-control input-box form-voyage-control" id="password" type="password" name="_password" autocomplete="current-password" required /> #}
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-lock"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
+                                                class="btn btn-secondary" type="submit">Misoratra</button></div>
+                                    {# </form> #}
+                                    {{ form_end(registrationForm) }}
+
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+
+</main><!-- ===============================================-->
+{# <h1>Register</h1>
+
+{{ form_errors(registrationForm) }}
+
+{{ form_start(registrationForm) }}
+{{ form_widget(registrationForm.username) }}
+{{ form_widget(registrationForm.plainPassword, {
+label: 'Password'
+}) }}
+{{ form_row(registrationForm.agreeTerms) }}
+
+<button type="submit" class="btn">Register</button>
+{{ form_end(registrationForm) }} #}
+{% endblock %}

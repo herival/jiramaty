@@ -18,10 +18,13 @@
             <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto pt-2 pt-lg-0 font-base">
                 </ul>
-                <form>
-                    <button class="btn text-800 order-1 order-lg-0 me-2" type="button">Support</button>
-                    <button class="btn btn-voyage-outline order-0" type="submit"><span class="text-primary">Sign in</span></button>
-                </form>
+                <div class="d-flex justify-content-end">
+                    {% if app.user %}
+                        <a href="{{path('app_logout')}}" class="btn btn-voyage-outline order-0"><span class="text-primary">Mivoaka</span></a>
+                        {% else %}
+                        <a href="{{path('app_login')}}" class="btn btn-voyage-outline order-0"><span class="text-primary">Miditra</span></a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </nav>
@@ -49,47 +52,39 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                     aria-labelledby="nav-home-tab">
-                                    <form class="row g-4 mt-5">
-                                        <div class="col-sm-6 col-md-6 col-xl-5">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputAddress1">Address 1</label><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputAddress1" type="text" placeholder="From where" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-map-marker-alt"></i></span></div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-xl-5">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputAddress2">Address 2</label><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputAddress2" type="text" placeholder="To where" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-map-marker-alt"> </i></span></div>
+                                    <form class="row g-4 mt-5" action="{{ path ('app_searchexcuses') }}" method="post">
+                                        <div class="col-sm-6 col-md-6 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden" for="inputAddress1">Toerana</label>
+                                                <input class="form-control input-box form-voyage-control" id="toerana" type="text" placeholder="Toerana" name="toerana"/>
+                                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control" id="inputdateOne"
+                                                    class="form-control input-box form-voyage-control" id="inputdateOne" name="date_fiandoana"
                                                     type="date" /><span
                                                     class="nav-link-icon text-800 fs--1 input-box-icon"><i
                                                         class="fas fa-calendar"></i></span></div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control" id="inputDateTwo"
+                                                    class="form-control input-box form-voyage-control" id="inputDateTwo" name="date_fiafarana"
                                                     type="date" /><span
                                                     class="nav-link-icon text-800 fs--1 input-box-icon"><i
                                                         class="fas fa-calendar"></i></span></div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-xl-5">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputPersonOne">Person</label><select
-                                                    class="form-select form-voyage-select input-box"
-                                                    id="inputPersonOne">
-                                                    <option selected="selected">2 Adults</option>
-                                                    <option>2 Adults 1 children</option>
-                                                    <option>2 Adults 2 children</option>
-                                                </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-user"> </i></span></div>
+                                        <div class="col-sm-6 col-md-6 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+                                                <select class="form-select form-voyage-select input-box"id="inputPersonOne" name="safidy">
+                                                    <option>Mandamina</option>
+                                                    <option selected="selected">Mahasorena</option>
+                                                    <option>Mampamonongo-tena</option>
+                                                    <option>Maharikoriko</option>
+                                                </select>
+                                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><iclass="fas fa-poo"></i></span>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
                                                 class="btn btn-secondary" type="submit">Omeo Hevitra!</button></div>
