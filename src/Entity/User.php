@@ -33,6 +33,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column]
+    private ?int $quotas = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,5 +109,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getQuotas(): ?int
+    {
+        return $this->quotas;
+    }
+
+    public function setQuotas(int $quotas): static
+    {
+        $this->quotas = $quotas;
+
+        return $this;
     }
 }
