@@ -20,32 +20,42 @@
                 </ul>
                 <div class="d-flex justify-content-end">
                     {% if app.user %}
-                        <a href="{{path('app_logout')}}" class="btn btn-voyage-outline order-0"><span class="text-primary">Mivoaka</span></a>
-                        {% else %}
-                        <a href="{{path('app_login')}}" class="btn btn-voyage-outline order-0"><span class="text-primary">Miditra</span></a>
+                    <a href="{{path('app_logout')}}" class="btn btn-voyage-outline order-0"><span
+                            class="text-primary">Mivoaka</span></a>
+                    {% else %}
+                    <a href="{{path('app_login')}}" class="btn btn-voyage-outline order-0"><span
+                            class="text-primary">Miditra</span></a>
                     {% endif %}
                 </div>
             </div>
         </div>
     </nav>
     <section class="mt-7 py-0">
-        <div class="bg-holder w-50 bg-right d-none d-lg-block"
-            style="background-image:url(assets/img/gallery/jirama2.webp);"></div>
+
         <!--/.bg-holder-->
         <div class="container">
+
             <div class="row">
+                <div class="bg-holder w-50 bg-right d-none d-lg-block">
+                    <img src=" {{ asset ('assets/img/gallery/jirama2.webp')}}" style="object-fit: cover;">
+                    {# style="background-image:url({{asset('assets/img/gallery/jirama2.webp')}});"> #}
+                </div>
                 <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
                     <h1 class="display-3 text-1000 fw-normal">'Ndao hitady hevitra</h1>
                     <h1 class="display-3 text-primary fw-bold">Hanapahana Jiro sy Rano</h1>
+                    {% for message in app.flashes('danger') %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+                    </div>
+                    {% endfor %}
                     <div class="pt-5">
                         <nav>
                             <div class="nav nav-tabs voyage-tabs" id="nav-tab" role="tablist">
-                                <button
-                                    class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                     aria-selected="true"><i class="fas fa-lightbulb"></i></button>
-                                <button
-                                    class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
                                     aria-selected="false"> <i class="fas fa-faucet"></i></button>
                             </div>
@@ -55,35 +65,42 @@
                                     <form class="row g-4 mt-5" action="{{ path ('app_searchexcuses') }}" method="post">
                                         <div class="col-sm-6 col-md-6 col-xl-10">
                                             <div class="input-group-icon">
-                                                <label class="form-label visually-hidden" for="inputAddress1">Toerana</label>
-                                                <input class="form-control input-box form-voyage-control" id="toerana" type="text" placeholder="Toerana" name="toerana"/>
-                                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                                                <label class="form-label visually-hidden"
+                                                    for="inputAddress1">Toerana</label>
+                                                <input class="form-control input-box form-voyage-control" id="toerana" required
+                                                    type="text" placeholder="Toerana ho tapahana jiro" name="toerana" />
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-map-marker-alt"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control" id="inputdateOne" name="date_fiandoana"
-                                                    type="date" /><span
+                                                    class="form-control input-box form-voyage-control" id="inputdateOne" required
+                                                    name="date_fiandoana" title="daty fiandohana" type="date" /><span
                                                     class="nav-link-icon text-800 fs--1 input-box-icon"><i
                                                         class="fas fa-calendar"></i></span></div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control" id="inputDateTwo" name="date_fiafarana"
-                                                    type="date" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-calendar"></i></span></div>
+                                                    class="form-control input-box form-voyage-control" id="inputDateTwo" required
+                                                    name="date_fiafarana" title="daty fiafarana" type="date" />
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-calendar"></i></span>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6 col-xl-10">
                                             <div class="input-group-icon">
-                                                <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
-                                                <select class="form-select form-voyage-select input-box"id="inputPersonOne" name="safidy">
+                                                <label class="form-label visually-hidden"
+                                                    for="inputPersonOne">Person</label>
+                                                <select class="form-select form-voyage-select input-box"
+                                                    id="inputPersonOne" name="safidy" title="Safidy fanelingelenana">
                                                     <option>Mandamina</option>
                                                     <option selected="selected">Mahasorena</option>
                                                     <option>Mampamonongo-tena</option>
                                                     <option>Maharikoriko</option>
                                                 </select>
-                                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><iclass="fas fa-poo"></i></span>
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-poo"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
@@ -92,50 +109,49 @@
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                                     aria-labelledby="nav-profile-tab">
-                                    <form class="row g-4 mt-5">
-                                        <div class="col-6">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputAddressThree">Address 1</label><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputAddressThree" type="text" placeholder="From where" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-map-marker-alt"></i></span></div>
+                                    <form class="row g-4 mt-5" action="{{ path ('app_searchexcuses') }}" method="post">
+                                        <div class="col-sm-6 col-md-6 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden"
+                                                    for="inputAddress1">Toerana</label>
+                                                <input class="form-control input-box form-voyage-control" id="toerana_rano" required
+                                                    type="text" placeholder="Toerana ho tapahana rano" name="toerana_rano" />
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-map-marker-alt"></i></span>
+                                            </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputAddressFour">Address 2</label><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputAddressFour" type="text" placeholder="To where" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-map-marker-alt"> </i></span></div>
-                                        </div>
-                                        <div class="col-6">
+                                        <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputDateThree" type="date" /><span
+                                                    class="form-control input-box form-voyage-control" id="inputdaterano" required
+                                                    name="date_fiandoana_rano" title="daty fiandohana" type="date" /><span
                                                     class="nav-link-icon text-800 fs--1 input-box-icon"><i
                                                         class="fas fa-calendar"></i></span></div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-sm-6 col-md-6 col-xl-5">
                                             <div class="input-group-icon"><input
-                                                    class="form-control input-box form-voyage-control"
-                                                    id="inputDateFour" type="date" /><span
-                                                    class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-calendar"></i></span></div>
+                                                    class="form-control input-box form-voyage-control" id="inputDaterano" required
+                                                    name="date_fiafarana_rano" title="daty fiafarana" type="date" />
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-calendar"></i></span>
+                                            </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="input-group-icon"><label class="form-label visually-hidden"
-                                                    for="inputPeopleTwo">People</label><select
-                                                    class="form-select form-voyage-select input-box"
-                                                    id="inputPeopleTwo">
-                                                    <option selected="selected">2 Adults</option>
-                                                    <option>2 Adults 1 children</option>
-                                                    <option>2 Adults 2 children</option>
-                                                </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i
-                                                        class="fas fa-user"> </i></span></div>
+                                        <div class="col-sm-6 col-md-6 col-xl-10">
+                                            <div class="input-group-icon">
+                                                <label class="form-label visually-hidden"
+                                                    for="inputPersonOne">Person</label>
+                                                <select class="form-select form-voyage-select input-box"
+                                                    id="inputPersonOne" name="safidy_rano" title="Safidy fanelingelenana">
+                                                    <option>Mandamina</option>
+                                                    <option selected="selected">Mahasorena</option>
+                                                    <option>Mampamonongo-tena</option>
+                                                    <option>Maharikoriko</option>
+                                                </select>
+                                                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+                                                        class="fas fa-poo"></i></span>
+                                            </div>
                                         </div>
-                                        <div class="col-12 d-grid mt-6"><button class="btn btn-secondary"
-                                                type="submit">Omeo Hevitra!</button></div>
+                                        <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6"><button
+                                                class="btn btn-secondary" type="submit">Omeo Hevitra!</button></div>
                                     </form>
                                 </div>
                             </div>
@@ -145,11 +161,65 @@
             </div>
         </div>
     </section>
-
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-
+    {% if response is defined and response is not null %}
+        
+    <section class="py-7" id="activities">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-12">
+                    <div class="carousel slide" id="carouselActivity" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="">
+                                <div class="row h-100">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="py-4 ">
+                                            <h2 class="mb-3 text-primary fs-3 fs-md-6">Soso-kevitra</h2>
+                                            <p class="fw-normal mb-0 pe-lg-9 display-5 text-900" id="textToCopy">{{response}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="copyText()">Adikao</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of .container-->
+    </section><!-- <section> close ============================-->
+        <!-- ============================================-->
+    {% endif %}
+        
 </main><!-- ===============================================-->
 <!--    End of Main Content-->
 <!-- ===============================================-->
+
 {% endblock %}
+{% block javascripts %}
+<script>
+    function copyText() {
+        // Récupérer le texte du paragraphe
+        var text = document.getElementById("textToCopy").innerText;
+    
+        // Créer un élément temporaire pour contenir le texte à copier
+        var tempInput = document.createElement("textarea");
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+    
+        // Sélectionner le texte dans l'élément temporaire
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999); // Pour les mobiles
+    
+        // Copier le texte dans le presse-papiers
+        document.execCommand("copy");
+    
+        // Supprimer l'élément temporaire
+        document.body.removeChild(tempInput);
+    
+        // Afficher un message de confirmation ou une alerte
+        alert("Soratra voadika");
+    }
+    </script>
+    
+{% endblock javascripts %}

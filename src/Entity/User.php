@@ -36,6 +36,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $quotas = null;
 
+    public function __construct()
+    {
+        $this->quotas = 10;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
